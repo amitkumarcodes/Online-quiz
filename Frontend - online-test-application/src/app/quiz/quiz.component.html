@@ -1,0 +1,14 @@
+<div *ngIf="quiz">
+    <h1>{{ quiz.title }}</h1>
+    <p>{{ quiz.description }}</p>
+    <form (submit)="onSubmit()">
+      <div *ngFor="let question of quiz.questions; let i = index">
+        <p>{{ question.questionText }}</p>
+        <label *ngFor="let option of [question.optionA, question.optionB, question.optionC, question.optionD]">
+          <input type="radio" name="question{{ i }}" (change)="onSelectAnswer(i, option)" [value]="option"> {{ option }}
+        </label>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  
